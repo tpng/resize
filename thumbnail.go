@@ -36,7 +36,7 @@ func Thumbnail(maxWidth, maxHeight uint, img image.Image, interp InterpolationFu
 	}
 
 	// Preserve aspect ratio
-	if origWidth > maxWidth {
+	if origWidth > maxWidth && maxWidth > 0 {
 		newHeight = uint(origHeight * maxWidth / origWidth)
 		if newHeight < 1 {
 			newHeight = 1
@@ -44,7 +44,7 @@ func Thumbnail(maxWidth, maxHeight uint, img image.Image, interp InterpolationFu
 		newWidth = maxWidth
 	}
 
-	if newHeight > maxHeight {
+	if newHeight > maxHeight && maxHeight > 0 {
 		newWidth = uint(newWidth * maxHeight / newHeight)
 		if newWidth < 1 {
 			newWidth = 1
